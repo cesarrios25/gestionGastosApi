@@ -1,3 +1,5 @@
+# El archivo configuration gestiona la conexion a la base de datos.
+
 # importar librerias
 from sqlalchemy import create_engine,event
 from sqlalchemy.orm import sessionmaker
@@ -17,4 +19,4 @@ dataBaseConnection = f"mysql+mysqlconnector://{userName}:{userPass}@{server}:{co
 engine = create_engine(dataBaseConnection)
 
 # abrir le sesion con la base de datos.
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+sessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
