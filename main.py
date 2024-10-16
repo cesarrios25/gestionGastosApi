@@ -1,4 +1,4 @@
-from fastapi import FastApi
+from fastapi import FastAPI
 from app.database.configuration import engine
 from app.api.models.tablasSQL import Base
 from app.api.routes.endpoints import rutas
@@ -9,7 +9,7 @@ from starlette.responses import RedirectResponse
 Base.metadata.create_all(bind=engine)
 
 #variable para administrar la aplicacion
-app = FastApi()
+app = FastAPI()
 
 #activar el API
 @app.get("/")

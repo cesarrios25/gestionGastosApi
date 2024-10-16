@@ -22,21 +22,21 @@ class Usuario(Base):
 
 class Gasto(Base):
     __tablename__='gastos'
-    id = Column(Integer, autoincrement = True)
+    id = Column(Integer, primary_key = True, autoincrement = True)
     descripcionGasto = Column(String(200))
     valorGastado = Column(Integer)
     fechaGasto = Column(Date)
 
 class Categoria(Base):
     __tablename__='categorias'
-    id = Column(Integer, autoincrement = True)
+    id = Column(Integer, primary_key = True, autoincrement = True)
     nombre = Column(String(50))
     descripcionCategoria = Column(String(200))
     imagenRuta = Column(String(255))
 
 class Ingreso(Base):
     __tablename__='ingresos'
-    id = Column(Integer, autoincrement = True)
+    id = Column(Integer, primary_key = True, autoincrement = True)
     valorIngreso = Column(Integer)
     descripcionIngreso = Column(String(200))
     fechaIngreso = Column(Date)

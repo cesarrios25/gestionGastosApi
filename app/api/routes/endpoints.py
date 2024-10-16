@@ -58,7 +58,7 @@ def buscarUsuarios(database:Session=Depends(conectarConBd)):
 
 # GASTO
 # asignar un endpoint
-@rutas.post('/gastos',response_model=Usuario, summary='Registrar un usuario en la base de datos')
+@rutas.post('/gasto',response_model=GastoDTORespuesta, summary='Registrar un usuario en la base de datos')
 
 def guardarGastos(gastosUsuario:GastoDTOPeticion, database:Session=Depends(conectarConBd)):
     try:
@@ -78,7 +78,7 @@ def guardarGastos(gastosUsuario:GastoDTOPeticion, database:Session=Depends(conec
         raise HTTPException(status_code=400, detail=f"Tenemos un problema {error}")
 
 # para buscar no necesito datos solo la conexion
-@rutas.get('/gastos', response_model=List[GastoDTORespuesta], summary='Buscar todos los usuarios en base de datos')
+@rutas.get('/gasto', response_model=List[GastoDTORespuesta], summary='Buscar todos los usuarios en base de datos')
 def buscarGastos(database:Session=Depends(conectarConBd)):
     try:
         gastos = database.query(Gasto).all()
@@ -92,7 +92,7 @@ def buscarGastos(database:Session=Depends(conectarConBd)):
 
 # CATEGORIA
 # asignar un endpoint
-@rutas.post('/categorias',response_model=Usuario, summary='Registrar un usuario en la base de datos')
+@rutas.post('/categoria',response_model=CategoriaDTORespuesta, summary='Registrar un usuario en la base de datos')
 
 def guardarCategoria(categoriaUsuario:CategoriaDTOPeticion, database:Session=Depends(conectarConBd)):
     try:
@@ -112,7 +112,7 @@ def guardarCategoria(categoriaUsuario:CategoriaDTOPeticion, database:Session=Dep
         raise HTTPException(status_code=400, detail=f"Tenemos un problema {error}")
 
 # para buscar no necesito datos solo la conexion
-@rutas.get('/categorias', response_model=List[UsuarioDTORespuesta], summary='Buscar todos los usuarios en base de datos')
+@rutas.get('/categoria', response_model=List[CategoriaDTORespuesta], summary='Buscar todos los usuarios en base de datos')
 def buscarUsuarios(database:Session=Depends(conectarConBd)):
     try:
         categorias = database.query(Categoria).all()
@@ -125,7 +125,7 @@ def buscarUsuarios(database:Session=Depends(conectarConBd)):
 
 # INGRESO
 # asignar un endpoint
-@rutas.post('/ingresos',response_model=Usuario, summary='Registrar un ingreso en la base de datos')
+@rutas.post('/ingreso',response_model=IngresoDTORespuesta, summary='Registrar un ingreso en la base de datos')
 
 def guardarIngreso(ingresoUsuario:IngresoDTOPeticion, database:Session=Depends(conectarConBd)):
     try:
@@ -145,7 +145,7 @@ def guardarIngreso(ingresoUsuario:IngresoDTOPeticion, database:Session=Depends(c
         raise HTTPException(status_code=400, detail=f"Tenemos un problema {error}")
 
 # para buscar no necesito datos solo la conexion
-@rutas.get('/ingresos', response_model=List[IngresoDTORespuesta], summary='Buscar todos los ingresos en base de datos')
+@rutas.get('/ingreso', response_model=List[IngresoDTORespuesta], summary='Buscar todos los ingresos en base de datos')
 def buscarIngreso(database:Session=Depends(conectarConBd)):
     try:
         ingresos = database.query(Ingreso).all()
