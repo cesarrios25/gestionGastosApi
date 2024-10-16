@@ -24,7 +24,6 @@ def conectarConBd():
 # cada servico (operacion o transaccion bd) debe programarse como una funcion que reciba como parametro la sesion de la base de datos.
 
 # USUARIO
-
 # asignar un endpoint
 @rutas.post('/usuario',response_model=Usuario, summary='Registrar un usuario en la base de datos')
 
@@ -36,7 +35,7 @@ def guardarUsuario(datosUsuario:UsuarioDTOPeticion, database:Session=Depends(con
             ciudad = datosUsuario.ciudad,
             metaAhorro = datosUsuario.metaAhorro
         )
-        # ordenandole a la bd
+        # ordenandole a la base de datos.
         database.add(usuario)
         database.commit()
         database.refresh(usuario)
@@ -58,7 +57,6 @@ def buscarUsuarios(database:Session=Depends(conectarConBd)):
         raise HTTPException(status_code=400, detail=f"No se pueden buscar los usuarios {error}")
 
 # GASTO
-
 # asignar un endpoint
 @rutas.post('/gastos',response_model=Usuario, summary='Registrar un usuario en la base de datos')
 
@@ -69,7 +67,7 @@ def guardarGastos(gastosUsuario:GastoDTOPeticion, database:Session=Depends(conec
             valorGastado = gastosUsuario.valorGastado,
             fechaGasto = gastosUsuario.fechaGasto
         )
-        # ordenandole a la bd
+        # ordenandole a la base de datos.
         database.add(gasto)
         database.commit()
         database.refresh(gasto)
@@ -93,7 +91,6 @@ def buscarGastos(database:Session=Depends(conectarConBd)):
 
 
 # CATEGORIA
-
 # asignar un endpoint
 @rutas.post('/categorias',response_model=Usuario, summary='Registrar un usuario en la base de datos')
 
@@ -127,7 +124,6 @@ def buscarUsuarios(database:Session=Depends(conectarConBd)):
 
 
 # INGRESO
-
 # asignar un endpoint
 @rutas.post('/ingresos',response_model=Usuario, summary='Registrar un ingreso en la base de datos')
 

@@ -1,8 +1,19 @@
-nombre = "cesar"
-edad = 28
+from fastapi import FastApi
+from app.database.configuration import engine
+from app.api.models.tablasSQL import Base
+from app.api.routes.endpoints import rutas
 
-print("mi nombre es" , nombre , "y tengo " , edad , "años")
+from starlette.responses import RedirectResponse
 
-# nueva version
+#crear las tablas de sql desde python
+Base.metadata.create_all(bind=engine)
 
-print(f"mi nombre es: {nombre} y tengo {edad} años")
+#variable para administrar la aplicacion
+app = FastApi()
+
+#activar el API
+@app.get("/")
+def main():
+    return RedirectResponse(url="/docs")
+
+app.include_router(rutas)
